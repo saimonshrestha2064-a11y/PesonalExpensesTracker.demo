@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.expensetracker.MainController"
+            styleClass="root-pane">
+
+    <!-- ══════════════════════════════════════════════════════
+         TOP: Header Bar
+         ══════════════════════════════════════════════════════ -->
+    <top>
+        <VBox styleClass="header-bar">
+            <Label text="💰 Personnel Expenses Tracker"
+                   styleClass="header-title"/>
+            <Label text="Principles of Programming and Data Structures  |  Saimon Shrestha  |  ID: 2531303"
+                   styleClass="header-subtitle"/>
+        </VBox>
+    </top>
+
+    <!-- ══════════════════════════════════════════════════════
+         CENTER: Main Content (left form + right table+report)
+         ══════════════════════════════════════════════════════ -->
+    <center>
+        <HBox spacing="0">
+
+            <!-- ── LEFT PANEL: Input Form ─────────────────── -->
+            <VBox styleClass="left-panel" prefWidth="300" spacing="8">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+                <Label text="ADD / EDIT EXPENSE" styleClass="section-title"/>
+                <Separator/>
+
+                <!-- Amount -->
+                <Label text="Amount (Rs.)" styleClass="field-label"/>
+                <TextField fx:id="amountField"
+                           promptText="e.g. 250.00"
+                           styleClass="input-field"/>
+
+                <!-- Category -->
+                <Label text="Category" styleClass="field-label"/>
+                <ComboBox fx:id="categoryComboBox"
+                          promptText="Select Category"
+                          maxWidth="Infinity"
+                          styleClass="input-field"/>
+
+                <!-- Date -->
+                <Label text="Date" styleClass="field-label"/>
+                <DatePicker fx:id="datePicker"
+                            maxWidth="Infinity"
+                            styleClass="input-field"/>
+
+                <!-- Description -->
+                <Label text="Description" styleClass="field-label"/>
+                <TextField fx:id="descriptionField"
+                           promptText="e.g. Lunch at canteen"
+                           styleClass="input-field"/>
+
+                <VBox spacing="6">
+                    <padding><Insets top="10"/></padding>
+                    <!-- Add button -->
+                    <Button fx:id="addButton"
+                            text="✚  Add Expense"
+                            onAction="#handleAddExpense"
+                            maxWidth="Infinity"
+                            styleClass="btn-primary"/>
+                    <!-- Update button (shown only when editing) -->
+                    <Button fx:id="updateButton"
+                            text="✎  Update Expense"
+                            onAction="#handleUpdateExpense"
+                            maxWidth="Infinity"
+                            visible="false"
+                            styleClass="btn-update"/>
+                    <!-- Clear -->
+                    <Button fx:id="clearButton"
+                            text="✕  Clear Form"
+                            onAction="#handleClearForm"
+                            maxWidth="Infinity"
+                            styleClass="btn-secondary"/>
+                    <!-- Delete -->
+                    <Button text="🗑  Delete Selected"
+                            onAction="#handleDeleteExpense"
+                            maxWidth="Infinity"
+                            styleClass="btn-danger"/>
+                </VBox>
+
+                <Separator/>
+
+                <!-- ── Filter Section ──────────────────────── -->
+                <Label text="FILTER EXPENSES" styleClass="section-title"/>
+
+                <Label text="By Category" styleClass="field-label"/>
+                <ComboBox fx:id="filterCategoryComboBox"
+                          maxWidth="Infinity"
+                          styleClass="input-field"/>
+
+                <Label text="By Month" styleClass="field-label"/>
+                <ComboBox fx:id="filterMonthComboBox"
+                          maxWidth="Infinity"
+                          styleClass="input-field"/>
+
+                <Label text="By Year" styleClass="field-label"/>
+                <ComboBox fx:id="filterYearComboBox"
+                          maxWidth="Infinity"
+                          styleClass="input-field"/>
+
+                <VBox spacing="6">
+                    <padding><Insets top="6"/></padding>
+                    <Button text="🔍  Apply Filter"
+                            onAction="#handleFilter"
+                            maxWidth="Infinity"
+                            styleClass="btn-primary"/>
+                    <Button text="↺  View All"
+                            onAction="#handleViewAll"
+                            maxWidth="Infinity"
+                            styleClass="btn-secondary"/>
+                    <Button text="📊  Generate Report"
+                            onAction="#handleGenerateReport"
+                            maxWidth="Infinity"
+                            styleClass="btn-report"/>
+                </VBox>
+
+            </VBox>
+
+            <!-- ── RIGHT PANEL: Table + Report ───────────── -->
+            <VBox HBox.hgrow="ALWAYS" spacing="0">
+
+                <!-- Expenses Table -->
+                <VBox styleClass="table-panel" VBox.vgrow="ALWAYS">
+                    <padding><Insets top="12" right="16" bottom="8" left="16"/></padding>
+
+                    <Label text="EXPENSE RECORDS" styleClass="section-title"/>
+                    <Separator/>
+
+                    <TableView fx:id="expenseTable"
+                               VBox.vgrow="ALWAYS"
+                               styleClass="expense-table">
+                        <placeholder>
+                            <Label text="No expenses recorded yet. Add your first expense using the form on the left."
+                                   style="-fx-text-fill: #888888; -fx-font-size: 13px;"/>
+                        </placeholder>
+                        <columns>
+                            <TableColumn fx:id="colId"          text="ID"          />
+                            <TableColumn fx:id="colDate"        text="Date"        />
+                            <TableColumn fx:id="colCategory"    text="Category"    />
+                            <TableColumn fx:id="colAmount"      text="Amount"      />
+                            <TableColumn fx:id="colDescription" text="Description" />
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+
+                    <!-- Total label -->
+                    <HBox alignment="CENTER_RIGHT" styleClass="total-bar">
+                        <padding><Insets top="6" right="4" bottom="4" left="4"/></padding>
+                        <Label fx:id="totalLabel"
+                               text="Total Shown:  Rs. 0.00"
+                               styleClass="total-label"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Report Area -->
+                <VBox styleClass="report-panel" prefHeight="200">
+                    <padding><Insets top="8" right="16" bottom="8" left="16"/></padding>
+                    <Label text="EXPENSE SUMMARY REPORT" styleClass="section-title"/>
+                    <Separator/>
+                    <TextArea fx:id="reportTextArea"
+                              promptText="Click 'Generate Report' to see a category-wise expense summary here..."
+                              editable="false"
+                              VBox.vgrow="ALWAYS"
+                              styleClass="report-area"
+                              wrapText="true"/>
+                </VBox>
+
+            </VBox>
+        </HBox>
+    </center>
+
+    <!-- ══════════════════════════════════════════════════════
+         BOTTOM: Status Bar
+         ══════════════════════════════════════════════════════ -->
+    <bottom>
+        <HBox styleClass="status-bar">
+            <Label fx:id="statusLabel"
+                   text="  Ready."
+                   styleClass="status-label"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

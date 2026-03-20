@@ -1,0 +1,277 @@
+/* ═══════════════════════════════════════════════════════════
+   Personnel Expenses Tracker – Stylesheet
+   Principles of Programming and Data Structures
+   Student: Saimon Shrestha | ID: 2531303
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Root & Background ──────────────────────────────────── */
+.root-pane {
+    -fx-background-color: #F0F4F8;
+    -fx-font-family: "Arial";
+    -fx-font-size: 13px;
+}
+
+/* ── Header Bar ─────────────────────────────────────────── */
+.header-bar {
+    -fx-background-color: #1F3864;
+    -fx-padding: 14 20 14 20;
+    -fx-spacing: 4;
+}
+
+.header-title {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.header-subtitle {
+    -fx-text-fill: #A8C7E8;
+    -fx-font-size: 12px;
+}
+
+/* ── Left Panel ─────────────────────────────────────────── */
+.left-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #D8E4F0;
+    -fx-border-width: 0 1 0 0;
+    -fx-min-width: 280px;
+    -fx-max-width: 300px;
+}
+
+/* ── Section Titles ─────────────────────────────────────── */
+.section-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F3864;
+    -fx-padding: 6 0 4 0;
+}
+
+/* ── Field Labels ───────────────────────────────────────── */
+.field-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #444444;
+    -fx-font-weight: bold;
+    -fx-padding: 2 0 1 0;
+}
+
+/* ── Input Fields ───────────────────────────────────────── */
+.input-field {
+    -fx-background-color: #F7FAFF;
+    -fx-border-color: #C0D4EC;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 6 10 6 10;
+    -fx-font-size: 13px;
+}
+
+.input-field:focused {
+    -fx-border-color: #2E75B6;
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(46,117,182,0.25), 4, 0, 0, 0);
+}
+
+/* ComboBox specific */
+.combo-box {
+    -fx-background-color: #F7FAFF;
+    -fx-border-color: #C0D4EC;
+    -fx-border-radius: 4;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 4 8 4 8;
+}
+
+/* DatePicker specific */
+.date-picker {
+    -fx-background-color: #F7FAFF;
+    -fx-border-color: #C0D4EC;
+    -fx-border-radius: 4;
+}
+
+/* ── Buttons ────────────────────────────────────────────── */
+
+/* Primary – Add / Filter */
+.btn-primary {
+    -fx-background-color: #2E75B6;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 8 14 8 14;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+.btn-primary:hover   { -fx-background-color: #1F5C9C; }
+.btn-primary:pressed { -fx-background-color: #174880; }
+
+/* Update */
+.btn-update {
+    -fx-background-color: #107C10;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 8 14 8 14;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+.btn-update:hover { -fx-background-color: #0B5C0B; }
+
+/* Secondary – Clear / View All */
+.btn-secondary {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #1F3864;
+    -fx-border-color: #2E75B6;
+    -fx-border-width: 1;
+    -fx-font-size: 13px;
+    -fx-padding: 7 14 7 14;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+.btn-secondary:hover { -fx-background-color: #EBF3FB; }
+
+/* Danger – Delete */
+.btn-danger {
+    -fx-background-color: #C42B1C;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 8 14 8 14;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+.btn-danger:hover { -fx-background-color: #9B1F14; }
+
+/* Report */
+.btn-report {
+    -fx-background-color: #7B4F9E;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 8 14 8 14;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+.btn-report:hover { -fx-background-color: #5C3478; }
+
+/* ── Table Panel ────────────────────────────────────────── */
+.table-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 0;
+}
+
+/* TableView */
+.expense-table {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #D8E4F0;
+    -fx-table-cell-border-color: #E8EEF5;
+}
+
+.expense-table .column-header {
+    -fx-background-color: #1F3864;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+    -fx-padding: 8 10 8 10;
+}
+
+.expense-table .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.expense-table .column-header-background {
+    -fx-background-color: #1F3864;
+}
+
+.expense-table .table-row-cell {
+    -fx-border-color: transparent transparent #E8EEF5 transparent;
+    -fx-font-size: 13px;
+}
+
+.expense-table .table-row-cell:even {
+    -fx-background-color: #F5F9FF;
+}
+
+.expense-table .table-row-cell:odd {
+    -fx-background-color: #FFFFFF;
+}
+
+.expense-table .table-row-cell:selected {
+    -fx-background-color: #BDD7EE;
+    -fx-text-fill: #1F3864;
+}
+
+.expense-table .table-row-cell:hover {
+    -fx-background-color: #D6E8F8;
+}
+
+/* TableCell padding */
+.expense-table .table-cell {
+    -fx-padding: 7 10 7 10;
+}
+
+/* ── Total Bar ──────────────────────────────────────────── */
+.total-bar {
+    -fx-background-color: #EBF3FB;
+    -fx-border-color: #C0D4EC;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 6 10 6 10;
+}
+
+.total-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F3864;
+}
+
+/* ── Report Panel ───────────────────────────────────────── */
+.report-panel {
+    -fx-background-color: #FAFCFF;
+    -fx-border-color: #D8E4F0;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 0;
+}
+
+.report-area {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 12.5px;
+    -fx-background-color: #F5F9FF;
+    -fx-border-color: #C0D4EC;
+    -fx-text-fill: #1F3864;
+    -fx-control-inner-background: #F5F9FF;
+}
+
+/* ── Status Bar ─────────────────────────────────────────── */
+.status-bar {
+    -fx-background-color: #1F3864;
+    -fx-padding: 5 10 5 10;
+    -fx-min-height: 28px;
+}
+
+.status-label {
+    -fx-text-fill: #A8C7E8;
+    -fx-font-size: 12px;
+}
+
+/* ── Separator ──────────────────────────────────────────── */
+.separator .line {
+    -fx-border-color: #D8E4F0;
+}
+
+/* ── Scroll bars ────────────────────────────────────────── */
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #C0D4EC;
+    -fx-background-radius: 4;
+}
+.scroll-bar:vertical .thumb:hover,
+.scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #2E75B6;
+}
+.scroll-bar .track {
+    -fx-background-color: #F0F4F8;
+}
